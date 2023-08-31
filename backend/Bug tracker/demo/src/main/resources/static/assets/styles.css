@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    margin-left: 20px;
+}
+
+.navbar-right {
+    margin-right: 20px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.notification-icon {
+    color: #ff9900;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 250px; /* Ajustează lățimea lateralului după preferințe */
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh; /* Ocupă înălțimea întregii pagini */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.sidebar-item {
+    margin-bottom: 20px;
+}
+
+.sidebar h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.content {
+    flex: 3;
+    padding: 20px;
+}
+
+.sidebar-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 16px;
+}
+
+.sidebar-item a.active {
+    font-weight: bold;
+}

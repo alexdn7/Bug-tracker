@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .header, .footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+    .table {
+      width: 100%;
+    }
+    .table-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50vw; /* 50% of viewport width */
+      height: 50vh; /* 50% of viewport height */
+      margin: auto;
+      padding: 1rem;
+    }
+    #actions-button {
+      background-color: green;
+      color: white;
+      width: 100%;
+    }
+    #actions-button:hover {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>Tickets</h1>
+</div>
+<div class="table-container">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${tickets}">
+      <td th:text="${ticket.ticketId}"></td>
+      <td th:text="${ticket.title}"></td>
+      <td th:text="${ticket.description}"></td>
+      <td> Pending </td>
+      <td>
+        <button id = "actions-button">
+          <a href="#" style="text-decoration: none; color: white; display: block;">
+            View more
+          </a>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="footer">
+  <p>© 2023 My Website. All rights reserved.</p>
+</div>
+</body>
+</html>
