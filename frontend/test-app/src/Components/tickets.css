@@ -1,0 +1,32 @@
+.tickets-main-div {
+    display: flex;
+    justify-content: center;
+}
+
+.tickets-grid {
+    list-style: none;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3%;
+}
+
+.tickets-card {
+    background-color:  #264e70;
+    color: white;
+    border: 1px groove black;
+    padding: 10px;
+    text-align: center;
+}
+
+.tickets-card :hover {
+    transform: scale(1.05);
+    transition: all 0.3s;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    margin-top: 10px;
+  }
