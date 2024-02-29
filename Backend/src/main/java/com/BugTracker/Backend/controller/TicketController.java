@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/ticket")
 public class TicketController {
@@ -38,6 +39,11 @@ public class TicketController {
     public ResponseEntity<TicketDto> updateTicket(@PathVariable Long ticketId,
                                                   @RequestBody TicketDto ticketDto) {
         return ResponseEntity.ok(ticketService.updateTicket(ticketId, ticketDto));
+    }
+
+    @GetMapping("/{projectId}/view")
+    public ResponseEntity<List<TicketDto>> getTicketsByProjectId(@PathVariable Long projectId) {
+        return ResponseEntity.ok(ticketService.getTicketsByProjectId(projectId));
     }
 
     @DeleteMapping("delete/{ticketId}")

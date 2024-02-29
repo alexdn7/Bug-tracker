@@ -15,6 +15,8 @@ public interface ITicketService {
 
     List<TicketDto> getTicketsByPriority(Priority priority);
 
+    List<TicketDto> getTicketsByProjectId(Long projectId);
+
     TicketDto updateTicket(Long ticketId, TicketDto ticketDto);
 
     void deleteTicket(Long ticketId);
