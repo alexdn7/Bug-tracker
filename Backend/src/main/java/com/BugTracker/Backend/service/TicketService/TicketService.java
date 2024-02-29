@@ -67,6 +67,16 @@ public class TicketService implements ITicketService {
     }
 
     @Override
+    public List<TicketDto> getTicketsByProjectId(Long projectId) {
+        projectRepository.findById(projectId)
+                .orElseThrow(() -> new EntityNotFoundException("Project with given ID not found"));
+        List<Ticket> ticketsByProjectId = ticketRepository.findTicketsByProjectId(projectId);
+        return ticketsByProjectId.stream()
+                .map(TicketMapper::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public TicketDto updateTicket(Long ticketId, TicketDto ticketDto) {
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new EntityNotFoundException("Entity with given ID not found!"));
