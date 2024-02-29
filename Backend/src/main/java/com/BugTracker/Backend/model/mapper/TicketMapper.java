@@ -21,7 +21,7 @@ public class TicketMapper {
         Ticket ticket = new Ticket();
         ticket.setTicketId(ticketDto.getTicketId());
         ticket.setTitle(ticketDto.getTitle());
-        ticket.setDescription(ticket.getDescription());
+        ticket.setDescription(ticketDto.getDescription());
         ticket.setPriority(ticketDto.getPriority());
         ticket.setStatus(ticket.getStatus());
         return ticket;
