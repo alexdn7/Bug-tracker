@@ -35,5 +35,5 @@ public class Project extends BaseEntity{
             joinColumns=@JoinColumn(name="project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<User> users = new ArrayList<>();
+    private List<UserEntity> userEntities = new ArrayList<>();
 }
