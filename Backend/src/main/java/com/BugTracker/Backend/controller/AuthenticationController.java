@@ -4,15 +4,12 @@ import com.BugTracker.Backend.config.AuthenticationResponse;
 import com.BugTracker.Backend.model.dto.LoginDto;
 import com.BugTracker.Backend.model.dto.UserDto;
 import com.BugTracker.Backend.service.AuthService.AuthenticationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
+@CrossOrigin("*")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
@@ -22,17 +19,13 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody UserDto userDto
-            ) {
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody UserDto userDto) throws Exception {
         return ResponseEntity.ok(authenticationService.register(userDto));
     }
 
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(
-            @RequestBody LoginDto loginDto
-            ) {
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginDto loginDto) {
         return ResponseEntity.ok(authenticationService.login(loginDto));
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
@@ -44,6 +45,6 @@ public class ProjectController {
     @DeleteMapping("/delete/{projectId}")
     public ResponseEntity<String> deleteProject(@PathVariable Long projectId) {
         projectService.deleteProject(projectId);
-        return ResponseEntity.ok("Project succesfully deleted");
+        return ResponseEntity.ok("Project successfully deleted");
     }
 }

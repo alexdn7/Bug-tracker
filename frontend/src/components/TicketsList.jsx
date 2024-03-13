@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getAllTickets } from "../services/TicketService";
+import { getAllTickets, getTicketById } from "../services/TicketService";
 import Sidebar from "./Sidebar";
 
-export default function TicketsListComponent() {
+export default function TicketsList () {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
@@ -13,6 +13,15 @@ export default function TicketsListComponent() {
     getAllTickets()
       .then((response) => {
         setTickets(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+
+      getTicketById(1)
+      .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
