@@ -1,6 +1,6 @@
 package com.BugTracker.Backend.service.UserService;
 
-import com.BugTracker.Backend.model.User;
+import com.BugTracker.Backend.model.UserEntity;
 import com.BugTracker.Backend.model.dto.UserDto;
 import com.BugTracker.Backend.model.mapper.UserMapper;
 import com.BugTracker.Backend.repository.UserRepository;
@@ -24,9 +24,9 @@ public class UserService implements IUserService {
     @Override
     public UserDto addUser(UserDto userDto) {
         if(userRepository.findByEmail(userDto.getEmail()) == null) {
-            User user = UserMapper.mapToEntity(userDto);
-            user.setRegisteredOn(LocalDateTime.now());
-            return UserMapper.mapToDto(userRepository.save(user));
+            UserEntity userEntity = UserMapper.mapToEntity(userDto);
+            userEntity.setRegisteredOn(LocalDateTime.now());
+            return UserMapper.mapToDto(userRepository.save(userEntity));
         } else {
             throw new IllegalArgumentException("Already exists an user with given email");
         }
@@ -34,27 +34,27 @@ public class UserService implements IUserService {
 
     @Override
     public UserDto getUserById(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        return UserMapper.mapToDto(user);
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("UserEntity not found"));
+        return UserMapper.mapToDto(userEntity);
     }
 
     @Override
     public UserDto updateUser(Long userId, UserDto userDto) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        user.setRole(userDto.getRole());
-        user.setPasswordHash(userDto.getPasswordHash());
-        return UserMapper.mapToDto(user);
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("UserEntity not found"));
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setRole(userDto.getRole());
+        userEntity.setPassword(userDto.getPassword());
+        return UserMapper.mapToDto(userEntity);
     }
 
     @Override
     public List<UserDto> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return users.stream()
+        List<UserEntity> userEntities = userRepository.findAll();
+        return userEntities.stream()
                 .map(UserMapper::mapToDto)
                 .collect(Collectors.toList());
     }
@@ -62,8 +62,8 @@ public class UserService implements IUserService {
 
     @Override
     public void deleteUser(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        userRepository.delete(user);
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("UserEntity not found"));
+        userRepository.delete(userEntity);
     }
 }

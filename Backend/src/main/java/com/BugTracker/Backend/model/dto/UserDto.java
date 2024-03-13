@@ -20,5 +20,5 @@ public class UserDto {
     private String lastName;
     private Role role;
     private String email;
-    private String passwordHash;
+    private String password;
 }

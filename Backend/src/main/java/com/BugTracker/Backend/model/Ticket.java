@@ -8,9 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -38,7 +35,7 @@ public class Ticket extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "assigned_to")
-    private User assignedTo;
+    private UserEntity assignedTo;
 
     @Column(nullable = false)
     private Status status;

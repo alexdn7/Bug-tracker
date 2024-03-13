@@ -39,7 +39,7 @@ public class TicketService implements ITicketService {
         );
         ticket.setAssignedTo(
                 userRepository.findById(ticketDto.getAssignedTo())
-                        .orElseThrow(() -> new EntityNotFoundException("User not found"))
+                        .orElseThrow(() -> new EntityNotFoundException("UserEntity not found"))
         );
         ticket.setStatus(Status.CREATED);
         return TicketMapper.mapToDto(ticketRepository.save(ticket));
@@ -89,7 +89,7 @@ public class TicketService implements ITicketService {
         );
         ticket.setAssignedTo(
                 userRepository.findById(ticketDto.getAssignedTo())
-                        .orElseThrow(() -> new EntityNotFoundException("User not found"))
+                        .orElseThrow(() -> new EntityNotFoundException("UserEntity not found"))
         );
         ticket.setStatus(ticketDto.getStatus());
         ticket.setModifiedOn(LocalDateTime.now());
